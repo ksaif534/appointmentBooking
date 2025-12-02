@@ -1,59 +1,255 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Appointment Booking System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive appointment booking system built with Laravel 12, featuring role-based access control, real-time availability management, and a professional public-facing interface.
 
-## About Laravel
+## 🌟 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Public Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **Professional Landing Page**: Eye-catching hero section with service highlights
+-   **Service Catalog**: Browse available services with detailed descriptions and pricing
+-   **Online Booking**: Intuitive booking flow with staff and time slot selection
+-   **Mobile Responsive**: Fully responsive design optimized for all devices
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Admin & Staff Features
 
-## Learning Laravel
+-   **Role-Based Access Control**: Three user roles (Admin, Staff, Customer)
+-   **Service Management**: Create, update, and manage services
+-   **Staff Management**: Manage staff details and service assignments
+-   **Availability Management**: Set and manage staff availability schedules
+-   **Appointment Management**: View and manage all appointments
+-   **Booking Notifications**: Email notifications for booking confirmations
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Technical Features
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **Authentication**: Secure user authentication with Laravel Breeze
+-   **Authorization**: Policy-based authorization for resources
+-   **Database Queue**: Background job processing for notifications
+-   **SQLite Database**: Lightweight database for easy setup
+-   **Tailwind CSS**: Modern, utility-first CSS framework
+-   **Alpine.js**: Lightweight JavaScript framework for interactivity
 
-## Laravel Sponsors
+## 📋 Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   PHP 8.2 or higher
+-   Composer
+-   SQLite (or MySQL/PostgreSQL)
+-   Node.js & NPM (optional, for local development)
 
-### Premium Partners
+## 🚀 Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Quick Setup
 
-## Contributing
+```bash
+# Clone the repository
+git clone https://github.com/ksaif534/appointmentBooking.git
+cd appointmentBooking
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Install dependencies and setup
+composer run setup
 
-## Code of Conduct
+# Start the development server
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Manual Setup
 
-## Security Vulnerabilities
+```bash
+# Clone the repository
+git clone https://github.com/ksaif534/appointmentBooking.git
+cd appointmentBooking
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Install PHP dependencies
+composer install
 
-## License
+# Copy environment file
+cp .env.example .env
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Generate application key
+php artisan key:generate
+
+# Create SQLite database
+touch database/database.sqlite
+
+# Run migrations
+php artisan migrate
+
+# (Optional) Seed the database
+php artisan db:seed
+
+# Start the development server
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Update your `.env` file with the following configurations:
+
+```env
+APP_NAME="Appointment Booking"
+APP_URL=http://localhost:8000
+
+# Database (SQLite by default)
+DB_CONNECTION=sqlite
+
+# Mail Configuration (for notifications)
+MAIL_MAILER=smtp
+MAIL_HOST=your-smtp-host
+MAIL_PORT=587
+MAIL_USERNAME=your-email
+MAIL_PASSWORD=your-password
+MAIL_FROM_ADDRESS=noreply@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+# Queue (for background jobs)
+QUEUE_CONNECTION=database
+```
+
+### Queue Worker
+
+To process booking notifications and other background jobs:
+
+```bash
+php artisan queue:work
+```
+
+## 📊 Database Schema
+
+### Core Tables
+
+-   **users**: User accounts with role-based access (admin, staff, customer)
+-   **services**: Available services with pricing and duration
+-   **staff_details**: Extended staff information
+-   **staff_services**: Staff-to-service assignments
+-   **staff_availabilities**: Staff availability schedules
+-   **appointments**: Booking records
+-   **notifications**: System notifications
+-   **calendar_syncs**: Calendar integration data
+
+## 🎯 Usage
+
+### User Roles
+
+1. **Admin**
+
+    - Full access to all features
+    - Manage services, staff, and appointments
+    - View all system data
+
+2. **Staff**
+
+    - Manage personal availability
+    - View assigned appointments
+    - Update service assignments
+
+3. **Customer**
+    - Browse services
+    - Book appointments
+    - View personal bookings
+
+### Booking Flow
+
+1. **Browse Services**: Visit `/our-services` to view available services
+2. **Select Service**: Click "Book Now" on desired service
+3. **Choose Staff**: Select from available staff members
+4. **Pick Date & Time**: Choose from available time slots
+5. **Confirm Booking**: Review and confirm appointment details
+6. **Receive Confirmation**: Get email notification with booking details
+
+## 🛠️ Development
+
+### Running Tests
+
+```bash
+# Run all tests
+composer test
+
+# Run specific test suite
+php artisan test --filter=BookingTest
+```
+
+### Code Quality
+
+```bash
+# Run Laravel Pint (code formatter)
+./vendor/bin/pint
+
+# Run static analysis
+./vendor/bin/phpstan analyse
+```
+
+### Development Server with Hot Reload
+
+```bash
+# Run all services (server, queue, logs, vite)
+composer run dev
+```
+
+## 📁 Project Structure
+
+```
+appointment-booking/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/      # Application controllers
+│   │   └── Middleware/       # Custom middleware
+│   ├── Models/               # Eloquent models
+│   ├── Notifications/        # Email notifications
+│   └── Policies/             # Authorization policies
+├── database/
+│   ├── migrations/           # Database migrations
+│   └── seeders/              # Database seeders
+├── resources/
+│   └── views/
+│       ├── components/       # Blade components
+│       ├── layouts/          # Layout templates
+│       ├── home.blade.php    # Landing page
+│       ├── about.blade.php   # About page
+│       └── services.blade.php # Services page
+├── routes/
+│   └── web.php               # Web routes
+└── tests/                    # Test files
+```
+
+## 🔐 Security
+
+-   All routes are protected with appropriate middleware
+-   Policy-based authorization for resource access
+-   CSRF protection on all forms
+-   SQL injection prevention via Eloquent ORM
+-   XSS protection via Blade templating
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 👥 Authors
+
+-   **Saif Kamal** - [GitHub](https://github.com/ksaif534)
+
+## 🙏 Acknowledgments
+
+-   Built with [Laravel](https://laravel.com/)
+-   UI components from [Tailwind CSS](https://tailwindcss.com/)
+-   Authentication scaffolding by [Laravel Breeze](https://laravel.com/docs/breeze)
+-   Icons from [Heroicons](https://heroicons.com/)
+
+## 📞 Support
+
+For support, email support@example.com or open an issue in the GitHub repository.
+
+---
+
+**Made with ❤️ using Laravel**
