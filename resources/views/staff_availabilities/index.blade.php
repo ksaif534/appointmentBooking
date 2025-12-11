@@ -42,30 +42,37 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             @switch($availability->weekday)
                                                 @case(0)
+                                                @case('sun')
                                                     Sunday
                                                 @break
 
                                                 @case(1)
+                                                @case('mon')
                                                     Monday
                                                 @break
 
                                                 @case(2)
+                                                @case('tue')
                                                     Tuesday
                                                 @break
 
                                                 @case(3)
+                                                @case('wed')
                                                     Wednesday
                                                 @break
 
                                                 @case(4)
+                                                @case('thu')
                                                     Thursday
                                                 @break
 
                                                 @case(5)
+                                                @case('fri')
                                                     Friday
                                                 @break
 
                                                 @case(6)
+                                                @case('sat')
                                                     Saturday
                                                 @break
                                             @endswitch

@@ -38,25 +38,29 @@
                                 required>
                                 <option value="">Select Weekday</option>
                                 <option value="0"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 0 ? 'selected' : '' }}>Sunday
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 0 || (old('weekday') ?? $staffAvailability->weekday) === 'sun' ? 'selected' : '' }}>
+                                    Sunday
                                 </option>
                                 <option value="1"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 1 ? 'selected' : '' }}>Monday
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 1 || (old('weekday') ?? $staffAvailability->weekday) === 'mon' ? 'selected' : '' }}>
+                                    Monday
                                 </option>
                                 <option value="2"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 2 ? 'selected' : '' }}>Tuesday
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 2 || (old('weekday') ?? $staffAvailability->weekday) === 'tue' ? 'selected' : '' }}>
+                                    Tuesday
                                 </option>
                                 <option value="3"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 3 ? 'selected' : '' }}>
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 3 || (old('weekday') ?? $staffAvailability->weekday) === 'wed' ? 'selected' : '' }}>
                                     Wednesday</option>
                                 <option value="4"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 4 ? 'selected' : '' }}>
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 4 || (old('weekday') ?? $staffAvailability->weekday) === 'thu' ? 'selected' : '' }}>
                                     Thursday</option>
                                 <option value="5"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 5 ? 'selected' : '' }}>Friday
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 5 || (old('weekday') ?? $staffAvailability->weekday) === 'fri' ? 'selected' : '' }}>
+                                    Friday
                                 </option>
                                 <option value="6"
-                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 6 ? 'selected' : '' }}>
+                                    {{ (old('weekday') ?? $staffAvailability->weekday) == 6 || (old('weekday') ?? $staffAvailability->weekday) === 'sat' ? 'selected' : '' }}>
                                     Saturday</option>
                             </select>
                             <x-input-error :messages="$errors->get('weekday')" class="mt-2" />

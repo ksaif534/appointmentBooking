@@ -19,7 +19,7 @@ class StaffAvailabilityFactory extends Factory
     {
         return [
             'staff_id'  => User::factory(),
-            'weekday'   => fake()->randomElement(['mon','tue','wed','thu','fri','sat','sun']),
+            'weekday'   => fake()->numberBetween(0, 6),
             'start_time'=> fake()->time('H:i'),
             'end_time'  => fake()->time('H:i'),
         ];
